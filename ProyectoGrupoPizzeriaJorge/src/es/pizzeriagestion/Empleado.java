@@ -18,7 +18,7 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		private String puesto;
 		private String nombreEmpleado;
 		private String id;
-		private String contraseña;
+		private String contrasenia;
 		
 		
 		/**
@@ -44,16 +44,17 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 * @param nombreEmpleado, Nombre del empleado
 		 * @param login, HashMap con datos para el Login
 		 * @param id, Identificador único del empleado.
+		 * @param contrasenia, Contraseña que se le asigna al empleado.
 		 */
 		public Empleado(String nombre, String numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados, 
-				String turno, double sueldo, String puesto, String nombreEmpleado, String id, String contraseña) {
+				String turno, double sueldo, String puesto, String nombreEmpleado, String id, String contrasenia) {
 			super("Pizzería Aepi","910000000", "12:00 - 23:00", "Calle Grande Nº 1", numeroDeEmpleados);
 			this.turno = turno;
 			this.sueldo = sueldo;
 			this.puesto = puesto;
 			this.nombreEmpleado = nombreEmpleado;
 			this.id = id;
-			this.contraseña = contraseña;
+			this.contrasenia = contrasenia;
 		}
 		
 		// Getters/ Setters:
@@ -134,13 +135,13 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 * @return Retorna la contraseña del empleado
 		 */
 		
-		public String getContraseña() {
-			return contraseña;
+		public String getContrasenia() {
+			return contrasenia;
 		}
 		
 		/**
 		 * Método que establece la contraseña del empleado
-		 * @param contraseña, Contraseña que se le asignará al empleado. 
+		 * @param contrasenia, Contraseña que se le asignará al empleado. 
 		 * 
 		 * El método comprueba primero que la longitud de la contraseña
 		 * sea de un mínimo de 8 caracteres y después que contenga al menos un dígito. Para ello conviete el String contraseña en un
@@ -149,17 +150,17 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 * por consola de los parámetros que debe cumplir la contraseña para ser aceptada.
 		 */
 		
-		public void setContraseña(String contraseña) {
-			boolean contraseñaCorrecta = false;
-			if (contraseña.length()> 8) {
-				for (char c : contraseña.toCharArray()) {
+		public void setContrasenia(String contrasenia) {
+			boolean contraseniaCorrecta = false;
+			if (contrasenia.length()> 8) {
+				for (char c : contrasenia.toCharArray()) {
 					if (Character.isDigit(c)) {
-						contraseñaCorrecta = true;
+						contraseniaCorrecta = true;
 					}
 				}
 			}
-			if (contraseñaCorrecta) {
-				this.contraseña = contraseña;
+			if (contraseniaCorrecta) {
+				this.contrasenia = contrasenia;
 				System.out.println("Se ha cambiado la contraseña correctamente.");
 			}
 			else {
@@ -190,7 +191,7 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		@Override
 		public String toString() {
 			return "Empleado [turno=" + turno + ", sueldo=" + sueldo + ", puesto=" + puesto + ", nombreEmpleado="
-					+ nombreEmpleado + ", id=" + id + ", contraseña=" + contraseña + "]";
+					+ nombreEmpleado + ", id=" + id + ", contraseña=" + contrasenia + "]";
 		}
 		
 		// Métodos de Clase:
@@ -229,4 +230,21 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 			}
 		}
 
+		/**
+		 * Método para revisar el login. Toma como argumentos dos String id y contraseña y los compara con las variables de clase.
+		 * @param id, toma como argumento el id del empleado
+		 * @param contrasenia, toma como argumento la contraseña del empleado
+		 * @return loginEstado, retorna true si id y contraseña que metemos como argumento coinciden con las de empleado,
+		 * de otra forma retorna false.
+		 */
+		public boolean login(String id, String contrasenia) {
+			boolean loginEstado = false;
+			if (id.equalsIgnoreCase(this.id)) {
+				if (contrasenia.equalsIgnoreCase(this.contrasenia)) {
+					loginEstado = true;
+				}
+			}
+			return loginEstado;
 		}
+	}
+
