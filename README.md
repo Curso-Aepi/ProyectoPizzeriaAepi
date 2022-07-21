@@ -1,5 +1,6 @@
 # ProyectoPizzeriaAepi
 
 Pendiente: 
-- Programar método main.
-- Pasar los Scanner a main, no dejar ninguno en métodos de clase!!
+- Añadir métodos faltantes al main en nuevos "cases" dentro del switch.
+- Subir las clases que faltan.
+- Juntar todo.
