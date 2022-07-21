@@ -30,29 +30,46 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		
 		
 		/**
-		 * Método constructor parametrizado
-		 * @param nombre, nombre de la pizzeria.
-		 * @param numeroDeTelefono, Número de Teléfono de la pizzería.
-		 * @param horario, Horario de apertura de la pizzería.
-		 * @param dirección, Dirección de la pizzería.
-		 * @param numeroDeEmpleados, Número de empleados de la pizzería.
-		 * @param turno, turno del empleado (Comida/Cena)
+		 * Método constructor en la clase hija parametrizado. Dado que no necesitamos los parámetros de la clase padre
+		 * en los métodos de clase, llamamos al constructor por defecto de la clase padre.
+		 * @param turno, turno del empleado (Comida/Cena). El código revisa que el turno que introducimos sea "Comida" o "Cena".
+		 * o lanza un error personalizado informando de los parámetros correctos.
 		 * @param sueldo, Sueldo del empleado por hora trabajada.
 		 * @param puesto, Cargo en la empresa
 		 * @param nombreEmpleado, Nombre del empleado
 		 * @param login, HashMap con datos para el Login
 		 * @param id, Identificador único del empleado.
-		 * @param contrasenia, Contraseña que se le asigna al empleado.
+		 * @param contrasenia, Contraseña que se le asigna al empleado. El código revisa que la contraseña introducida tenga al
+		 * menos 8 caracteres y un dígito o lanza un error personalizado informando de los parámetros necesarios.
 		 */
-		public Empleado(String nombre, String numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados, 
-				String turno, double sueldo, String puesto, String nombreEmpleado, String id, String contrasenia) {
-			super(nombre, numeroDeTelefono, horario, direccion, numeroDeEmpleados);
-			this.turno = turno;
+		public Empleado(String turno, double sueldo, String puesto, String nombreEmpleado, String id, String contrasenia) {
+			super();
+			try {
+				if (turno.equalsIgnoreCase("Comida")|| turno.equalsIgnoreCase("Cena") ) {
+					this.turno = turno;
+				} else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				System.out.println("El turno ha de ser 'Comida' o 'Cena'.");
+			}
 			this.sueldo = sueldo;
 			this.puesto = puesto;
 			this.nombreEmpleado = nombreEmpleado;
 			this.id = id;
-			this.contrasenia = contrasenia;
+			try {
+				if (contrasenia.length()>= 8) {
+					for (char c : contrasenia.toCharArray()) {
+						if (Character.isDigit(c)) {
+							this.contrasenia = contrasenia;
+						}
+					}
+				} else {
+					throw new Exception();
+				}
+			}catch (Exception ex) {
+				System.out.println("La contraseña debe tener un mínimo de ocho caracteres y al menos un número.");
+			}	
 		}
 		
 		// Getters/ Setters:
@@ -69,14 +86,15 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 * @param turno, turno que se le asignará al empleado
 		 */
 		public void setTurno(String turno) {
-			if (turno.equalsIgnoreCase("Comida")|| turno.equalsIgnoreCase("Cena") ) {
-				this.turno = turno;
-				System.out.println("Turno asignado correctamente a "+this.turno);
-			}
-			else {
+			try {
+				if (turno.equalsIgnoreCase("Comida")|| turno.equalsIgnoreCase("Cena") ) {
+					this.turno = turno;
+				} else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
 				System.out.println("El turno ha de ser 'Comida' o 'Cena'.");
 			}
-			
 		}
 
 		/**
@@ -149,19 +167,17 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 */
 		
 		public void setContrasenia(String contrasenia) {
-			boolean contraseniaCorrecta = false;
-			if (contrasenia.length()> 8) {
-				for (char c : contrasenia.toCharArray()) {
-					if (Character.isDigit(c)) {
-						contraseniaCorrecta = true;
+			try {
+				if (contrasenia.length()>= 8) {
+					for (char c : contrasenia.toCharArray()) {
+						if (Character.isDigit(c)) {
+							this.contrasenia = contrasenia;
+						}
 					}
+				} else {
+					throw new Exception();
 				}
-			}
-			if (contraseniaCorrecta) {
-				this.contrasenia = contrasenia;
-				System.out.println("Se ha cambiado la contraseña correctamente.");
-			}
-			else {
+			}catch (Exception ex) {
 				System.out.println("La contraseña debe tener un mínimo de ocho caracteres y al menos un número.");
 			}
 		}
@@ -240,4 +256,3 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 			return loginEstado;
 		}
 	}
-
