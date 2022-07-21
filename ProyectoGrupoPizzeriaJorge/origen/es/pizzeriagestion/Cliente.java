@@ -1,7 +1,12 @@
 package es.pizzeriagestion;
-
+/**
+ * Cliente va a representar un supuesto cliente abitual o registrado de nuestra pizzeria
+ * @author Nicolás Teso
+ *
+ */
 public class Cliente {
-private String nombre, telefono, apellido, direccion;
+
+	private String nombre, telefono, apellido, direccion;
 /**
  * 
  * Creamos las variables de la clase cliente.
@@ -71,9 +76,10 @@ private String nombre, telefono, apellido, direccion;
  * Cremos un método "descuento" que descuenta  un 15% del precio final.
  */
 	//añadir descuento 
-	public void descuento() {
-		int descuento = (pago - (15*pago/100));
+	public double descuento() {
+		double descuento = 0.85;
+		return descuento;
+		
 			
 	}
 }
-
