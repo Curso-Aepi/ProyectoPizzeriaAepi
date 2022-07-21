@@ -6,7 +6,7 @@ import es.pizzeriainterfaz.ICalcular;
  * Esta clase contiene los atributos y métodos del departamento de contabilidad.
  * @author Jorge Perdomo
  * @version 1.0
- * @see ICalcular
+ * @see ICalcular, Pizzeria.
  *
  */
 public class Contabilidad extends Pizzeria implements ICalcular{
@@ -33,7 +33,8 @@ public class Contabilidad extends Pizzeria implements ICalcular{
 	}
 	
 	/**
-	 * Método constructor parametrizado
+	 * Método constructor en la clase hija parametrizado. Dado que no necesitamos los parámetros de la clase padre
+	 * en los métodos de clase, llamamos al constructor por defecto de la clase padre.
 	 * @param ingresos
 	 * @param gastos
 	 * @param propinas
