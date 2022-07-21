@@ -32,7 +32,6 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		
 		/**
 		 * Método constructor parametrizado
-		 * Pasamos los datos de la pizzería como valores default ya que no cambian para esta ubicación, en este caso:
 		 * @param nombre, nombre de la pizzeria.
 		 * @param numeroDeTelefono, Número de Teléfono de la pizzería.
 		 * @param horario, Horario de apertura de la pizzería.
@@ -48,7 +47,7 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 */
 		public Empleado(String nombre, String numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados, 
 				String turno, double sueldo, String puesto, String nombreEmpleado, String id, String contrasenia) {
-			super("Pizzería Aepi","910000000", "12:00 - 23:00", "Calle Grande Nº 1", numeroDeEmpleados);
+			super(nombre, numeroDeTelefono, horario, direccion, numeroDeEmpleados);
 			this.turno = turno;
 			this.sueldo = sueldo;
 			this.puesto = puesto;
