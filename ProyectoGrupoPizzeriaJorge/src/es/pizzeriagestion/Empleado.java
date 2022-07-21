@@ -241,18 +241,22 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 
 		/**
 		 * Método para revisar el login. Toma como argumentos dos String id y contraseña y los compara con las variables de clase.
+		 * Si coinciden informa de que se concede el acceso al programa, en caso contrario lanza error personalizado.
 		 * @param id, toma como argumento el id del empleado
 		 * @param contrasenia, toma como argumento la contraseña del empleado
-		 * @return loginEstado, retorna true si id y contraseña que metemos como argumento coinciden con las de empleado,
-		 * de otra forma retorna false.
 		 */
-		public boolean login(String id, String contrasenia) {
-			boolean loginEstado = false;
-			if (id.equalsIgnoreCase(this.id)) {
-				if (contrasenia.equalsIgnoreCase(this.contrasenia)) {
-					loginEstado = true;
+		public void login(String id, String contrasenia) {
+			try {
+				if (id.equalsIgnoreCase(this.id)) {
+					if (contrasenia.equalsIgnoreCase(this.contrasenia)) {
+						System.out.println("Acceso correcto.");	
+					} else {
+						throw new Exception();
+					}
 				}
+			} catch (Exception loginIncorrecto) {
+				System.out.println("Los datos de acceso no son correctos.");
 			}
-			return loginEstado;
+			
 		}
 	}
