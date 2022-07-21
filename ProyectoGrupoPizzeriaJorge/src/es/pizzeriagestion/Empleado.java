@@ -1,6 +1,5 @@
 package es.pizzeriagestion;
 
-import java.util.Scanner;
 import es.pizzeriainterfaz.ICalcular;
 import es.pizzeriainterfaz.ICambioTurno;
 
