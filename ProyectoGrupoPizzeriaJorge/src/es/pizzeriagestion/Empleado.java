@@ -196,22 +196,17 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		// Métodos de Clase:
 		
 		/**
-		 * Método que calcula el sueldo final del empleado teniendo en cuenta las horas extra 
-		 * realizadas, que se abonan con un valor de 1,5 veces el sueldo por hora normal. 
-		 * Sobreescribe al método calcular de la Interfaz ICalcular.
-		 * 
+		 * Método que calcula el sueldo por hora de las horas extra del empleado.
+		 * En este caso se abonan a 1,5 veces el sueldo por hora normal.
+		 * En el main solicitaremos las horas extra para multiplicarlas por el valor de retorno del método.
+		 * @return sueldoHoraExtra, el valor al que se abonan las horas extra.
 		 */
 		@Override
 		
 		// Sacar Scanner, debe ir en método main !!!!
 		public double calcular() {
-			
-			Scanner lector = new Scanner(System.in);
-			System.out.println("Introduzca el número de horas extra del empleado: ");
-			int horaExtra = lector.nextInt();
-			double sueldoDiaFinal = (sueldo)+(sueldo*horaExtra*1.5);
-			lector.close();
-			return sueldoDiaFinal;	
+			double sueldoHoraExtra = (sueldo*1.5);
+			return sueldoHoraExtra;	
 		}
 		
 		/**
