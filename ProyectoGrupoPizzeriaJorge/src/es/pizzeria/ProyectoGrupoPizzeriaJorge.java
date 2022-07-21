@@ -62,7 +62,7 @@ public class ProyectoGrupoPizzeriaJorge {
 			if (value.login(id, contrasenia)) {
 				System.out.println("Acceso concedido.");
 				System.out.println("");
-				if (value.getPuesto().equalsIgnoreCase("Manager") || value.getPuesto().equalsIgnoreCase("Administrativo")) {
+				
 					int opcion = 0;
 					do {
 						System.out.println("¿Qué opción desea realizar?");
