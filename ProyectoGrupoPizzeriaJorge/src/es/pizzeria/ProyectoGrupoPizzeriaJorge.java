@@ -190,7 +190,7 @@ public class ProyectoGrupoPizzeriaJorge {
 								System.out.println("Precio total = " + precioTotalMenus + "€");
 								break;
 							
-							case 6:{
+							case 6:
 								
 								System.out.println("\n¡HOLA! BIENVENIDO A PEDIDOS\n");
 								
@@ -231,8 +231,7 @@ public class ProyectoGrupoPizzeriaJorge {
 										pedido.nuevoPedido(str);
 									}
 								}
-								break;
-							}
+							break;
 								
 							case 10: {
 								System.exit(0);
