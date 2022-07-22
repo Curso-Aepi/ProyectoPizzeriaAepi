@@ -73,6 +73,7 @@ public class ProyectoGrupoPizzeriaJorge {
 						System.out.println("5. Crear menú");
 						System.out.println("6. Añadir menú");
 						System.out.println("7. Añadir Cocinero");
+						System.out.println("8. Entregas a domicilio");
 						System.out.println("10. Salir ");
 						opcion = lector.nextInt();
 						
@@ -232,6 +233,44 @@ public class ProyectoGrupoPizzeriaJorge {
 									}
 								}
 							break;
+								
+							case 7:
+								
+								int tipoVehiculo = 0, numeroDeRepartidores = 0;
+								double distancia = 0, precioGasolina = 0;
+
+								System.out.println("Tipo de vehículo: ");
+								try {
+									tipoVehiculo = lector.nextInt();
+								} catch (Exception e) {
+									System.out.println("Revisa el tipo de vehículo: [1]moto [2]coche");
+								}
+
+								System.out.println("Distancia en kilómetros: ");
+								try {
+									distancia = lector.nextDouble();
+								} catch (Exception e) {
+									System.out.println("Revisa los kilómetros");
+								}
+
+								System.out.println("Precio litro gasolina: ");
+								try {
+									precioGasolina = lector.nextDouble();
+								} catch (Exception e) {
+									System.out.println("Revisa el precio de la gasolina");
+								}
+
+								System.out.println("Número de repartidores: ");
+								try {
+									numeroDeRepartidores = lector.nextInt();
+								} catch (Exception e) {
+									System.out.println("Revisa el número de repartidores");
+								}
+
+								Reparto reparto = new Reparto(tipoVehiculo, distancia, precioGasolina, numeroDeRepartidores);
+
+								System.out.println("El tiempo de entrega estimado es de " + reparto.tiempoDeEntrega() + " minutos");
+								System.out.println("El consumo de gasolina para el reparto es de " + reparto.calcular() + "€");
 								
 							case 10: {
 								System.exit(0);
