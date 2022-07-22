@@ -200,7 +200,7 @@ public class ProyectoGrupoPizzeriaJorge {
 								ArrayList<String>totalPedido = new ArrayList<>();
 								String comensal;
 								
-								System.out.println("¿Quiere sumar una pizza a su pedido?\n 0.Añadir pizza \n 2.Terminar pedido");
+								System.out.println("¿Quiere sumar una pizza a su pedido?\n 1.Añadir pizza \n 2.Terminar pedido");
 								int bucle = lector.nextInt();
 								
 								while(bucle != 2) {
@@ -212,7 +212,7 @@ public class ProyectoGrupoPizzeriaJorge {
 									pizza.setTipoMasa(lector.next());
 									System.out.println("\nOk. Por último, ¿Cuántas bebidas quiere?\nEscriba en número cuántas.");
 									pizza.setNumeroDeBebidas(lector.nextInt());
-									System.out.println("¿De este tipo de pizza, quiere 1, 2 o más pizzas?\nEscriba en número cuántaso.");
+									System.out.println("\n¿De este tipo de pizza, quiere 1, 2 o más pizzas?\nEscriba en número cuántas.");
 									comensal = pedido.servicio(pizza, lector.nextInt());
 									totalPedido.add(comensal);
 									
@@ -223,12 +223,12 @@ public class ProyectoGrupoPizzeriaJorge {
 									
 									System.out.println(str);
 									
-									System.out.println("\n¿Quiere sumar una pizza a su pedido?\n0. Terminar pedido\n1. Pedir otra pizza.");
+									System.out.println("\n¿Quiere sumar una pizza a su pedido?\n 1.Añadir pizza \n 2.Terminar pedido");
 									bucle = lector.nextInt();
 									
 									if(bucle == 2) {
 										System.out.println("\nGenial, ya solo falta una cosa. ¿Pulsa 1 si vas a comer en el restaurante o 2 si el pedido es a domicilio");
-										System.out.println("\nPedido generado: ");
+										pedido.setTipoPedido(lector.nextInt());
 										pedido.nuevoPedido(str);
 									}
 								}
