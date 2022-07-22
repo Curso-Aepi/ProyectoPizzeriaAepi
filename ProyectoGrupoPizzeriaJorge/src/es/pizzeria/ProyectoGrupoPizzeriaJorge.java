@@ -140,54 +140,53 @@ public class ProyectoGrupoPizzeriaJorge {
 								System.out.println("Los beneficios de hoy son de: "+(contabilidadDia.beneficio())+" €");
 								break;
 							}
-								case 5:
-						Menu menu = new Menu();
-						System.out.println("¿Número de pizzas?");
-						int numeroPizzas = lector.nextInt();
-						double precioTotalMenus = 0;
-						for (int i = 1; i <= numeroPizzas; i++) {
-							System.out.println("------ Pizza " + i + "/" + numeroPizzas + " ------");
-							System.out.println("¿Tamaño de la pizza?\n[1]Pequeña [2]Mediana [3]familiar: ");
-							try {
-								menu.setTamanioPizza(lector.nextInt());
-							} catch (Exception e) {
-								e.getMessage();
-							}
+							case 5:
+								Menu menu = new Menu();
+								System.out.println("¿Número de pizzas?");
+								int numeroPizzas = lector.nextInt();
+								double precioTotalMenus = 0;
+								for (int i = 1; i <= numeroPizzas; i++) {
+									System.out.println("------ Pizza " + i + "/" + numeroPizzas + " ------");
+									System.out.println("¿Tamaño de la pizza?\n[1]Pequeña [2]Mediana [3]familiar: ");
+									try {
+										menu.setTamanioPizza(lector.nextInt());
+									} catch (Exception e) {
+										e.getMessage();
+									}
 
-							System.out.println("¿Tipo de masa?\n[1]Normal [2]Fina [3]Sin gluten: ");
-							try {
-								menu.setTipoMasa(lector.nextInt());
-							} catch (Exception e) {
+									System.out.println("¿Tipo de masa?\n[1]Normal [2]Fina [3]Sin gluten: ");
+									try {
+										menu.setTipoMasa(lector.nextInt());
+									} catch (Exception e) {
 
-								e.getMessage();
-							}
+										e.getMessage();
+									}
 
-							System.out.println("¿Sabor de la pizza?\n[1]Vegetal [2]De carne [3]Carbonara: ");
+									System.out.println("¿Sabor de la pizza?\n[1]Vegetal [2]De carne [3]Carbonara: ");
 
-							try {
-								menu.setSaborPizza(lector.nextInt());
-							} catch (Exception e) {
+									try {
+										menu.setSaborPizza(lector.nextInt());
+									} catch (Exception e) {
 
-								e.getMessage();
-							}
+										e.getMessage();
+									}
 
-							System.out.println("¿Número de bebidas? ");
-							try {
-								menu.setNumeroDeBebidas(lector.nextInt());
-							} catch (Exception e) {
+									System.out.println("¿Número de bebidas? ");
+									try {
+										menu.setNumeroDeBebidas(lector.nextInt());
+									} catch (Exception e) {
 
-								e.getMessage();
-							}
+										e.getMessage();
+									}
 
-							menu.aniadirMenu();
-							precioTotalMenus += menu.calcular();
-							System.out.println("Precio del menú = " + menu.calcular() + "€");
+									menu.aniadirMenu();
+									precioTotalMenus += menu.calcular();
+									System.out.println("Precio del menú = " + menu.calcular() + "€");
 							
-							
-						}
-						
-						System.out.println("Precio total = " + precioTotalMenus + "€");
-						break;
+								}
+
+								System.out.println("Precio total = " + precioTotalMenus + "€");
+								break;
 							case 10: {
 								System.exit(0);
 							}
