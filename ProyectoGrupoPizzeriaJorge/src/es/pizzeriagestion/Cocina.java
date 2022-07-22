@@ -27,7 +27,7 @@ public class Cocina implements ICambioTurno {
 	
 	private int cocinero;
 	
-	private Pedidos pedido;
+	private Pedido pedido;
 	
 	private int mesa;
 	
@@ -45,7 +45,7 @@ public Cocina() {
 
 }
 
-public Cocina(int cocinero, Pedidos pedido, int comanda, String turno) {
+public Cocina(int cocinero, Pedido pedido, int comanda, String turno) {
 		super();
 		this.cocinero = cocinero;
 		this.pedido = pedido;
@@ -68,11 +68,11 @@ public void setCocinero(int cocinero) {
 	this.cocinero = cocinero;
 }
 
-public Pedidos getPedido() {
+public Pedido getPedido() {
 	return pedido;
 }
 
-public void setPedido(Pedidos pedido) {
+public void setPedido(Pedido pedido) {
 	this.pedido = pedido;
 }
 
