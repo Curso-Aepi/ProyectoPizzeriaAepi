@@ -1,12 +1,25 @@
-package es.pizzeria.gestion;
+package es.pizzeriagestion;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import es.pizzariainterfaz.ICalcularTotal;
 
+import es.pizzeriagestion.Pizzeria;
+import es.pizzeriagestion.Menus;
+
+
+/**
+
+ * Esta clase nos ayuda a crear un pedido que comprende una pizza con sus variantes de sabor, masa y tamaño y la cantidad de estas.
+ * El pedido nos dice si tenemos bebidas, saca un id para cara pedido y si es para lleva o no.
+ * 
+ * @author: Ricardo Murillo Fernández
+
+ * @version: 22/07/2022/A
+
+ */
 
 
 /**
@@ -15,17 +28,16 @@ import es.pizzariainterfaz.ICalcularTotal;
  *
  * VARIABLES
  * 
- * @param PLUS_ENVIO		Dinero extra cuando el envío es a domicilio.
  * @param idPedido			ID de cada uno de los pedidos.
  * @param numPizzas			Número de pizzas del mismo sabor que tiene un pedido.
  * @param tipoPedido		Pedido a domicilio o en restaurante.
- * 
+ * @param precioPedido			Precio total del pedido.
  * 
  * MÉTODO nuevoPedido()
  * 
  * @param menu				Recoge los valores Masa, Tamaño y sabor.
  * @param numPizzas			Recoge el número de pizzas que lleva cada menu.
- * @param <plato>			Lista de arrays de Objetos para unir el menu con el numero de pizzas y el id del pedido.
+ * @param <servicio>			Lista de arrays de Objetos para unir el menu con el numero de pizzas y el id del pedido.
  * @return					Lista de objetos con el contenido de un pedido.
  * 
  * 
@@ -38,7 +50,7 @@ import es.pizzariainterfaz.ICalcularTotal;
 
 
 
-public class Pedidos extends Pizzeria implements ICalcularTotal  {
+public class Pedidos extends Pizzeria  {
 	
 	
 
@@ -46,17 +58,20 @@ public class Pedidos extends Pizzeria implements ICalcularTotal  {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	final static double PLUS_ENVIO = 3.95;
+	// ID de cada uno de los pedidos.
+	private int idPedido;
+	
+	// Número de pizzas del mismo sabor que tiene un pedido.
+	private int numPizzas;
 
-	private int idPedido, numPizzas;
+	// Variable de tipo Menu.
+	private Menus menu;
 
-	// Variable de tipo Menu para recoger la comanda.
-	private Menu menu;
-
-	// tipoPedido para saber si es en restaurante o a domicilio
+	// Pedido para llevar o no
 	private int tipoPedido;
 
-	
+	// Una comanda es una parte del pedido, lo que pedidria un cliente si son cuatro, por ejemplo.
+	private String comanda;
 	
 	
 
@@ -69,8 +84,8 @@ public class Pedidos extends Pizzeria implements ICalcularTotal  {
 
 	}
 
-	public Pedidos(String nombre, int numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados,
-			int idPedido, int tipoPedido, int numPizzas, Menu menu) {
+	public Pedidos(String nombre, String numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados,
+			int idPedido, int tipoPedido, int numPizzas, int precioPedido, Menus menu) {
 		super(nombre, numeroDeTelefono, horario, direccion, numeroDeEmpleados);
 		this.idPedido = idPedido;
 		this.tipoPedido = tipoPedido;
@@ -95,11 +110,11 @@ public class Pedidos extends Pizzeria implements ICalcularTotal  {
 		this.idPedido = idPedido;
 	}
 
-	public Menu getMenu() {
+	public Menus getMenu() {
 		return menu;
 	}
 
-	public void setMenu(Menu menu) {
+	public void setMenu(Menus menu) {
 		this.menu = menu;
 	}
 
@@ -121,32 +136,75 @@ public class Pedidos extends Pizzeria implements ICalcularTotal  {
 
 	
 	
+	
+	
 // ------------------------------------------------------------------ MÉTODOS PROPIOS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 
+	/**
+
+     * Método que pinta por pantalla un pedido completo que consta de una comanda, su id y el tipo de pedido (a domicilio o en restaurante).
+      
+     * @param String comanda			Podemos entenderlo como uno de los servicios que completan un pedido. (pizza, masa, tamaño, sabor y cantidad y numero de bebida)
+
+     * @return Devuelve el ID de el pedido y su tipo (restaurante o domicilio) y una comanda si ya se ha creado previamente.
+
+     */
+
+	public void nuevoPedido(String comanda) {
+		idPedido++;			
+		System.out.println("\nNUEVO PEDIDO\n----------------\n" + "ID de pedido: " + idPedido + ".\nPedido para: " + tipoPedido() + comanda + "\n");
+	}
 	
 	
-	public void nuevoPedido(Menu menu, int numPizzas) {
-		idPedido++;
-		int cantidad, sabor;
-		String masa, tamanio;	
-		
-		ArrayList<Object> plato = new ArrayList<Object>();
-			plato.add(numPizzas);
-			plato.add(menu.getNumeroPizza());
-			plato.add(menu.getTamanioPizza());
-			plato.add(menu.getTipoMasa());
+	
+	/**
+
+     * Método que crea una Lista de Array de objetos para poder juntar la cantidad de pizzas que quieres de un sabor. Recordemos que un objeto Menu lo entendemos
+     * como una pizza y hay que sumarle la cantidad que queremos. Una vez complatado el ArrayList, lo convertimos a String para para que nos devuelva la comanda que pasamos al medido.
+      
+     * @param Menus menu			Este parametro es un objeto de la clase menú (Una pizza).
+     * @param int numPizzas			Este parametro indica la cantidad de pizzas de un sabor que quiere el cliente.
+
+     * @return Devuelve una comanda. Un String que contiene tanto la pizza, la masa, el tamaño, el sabor, la cantidad (int) y numero de bebidas que podría querer un cliente.
+
+     */
+	
+	public String servicio(Menus menu, int numPizzas) {
+		String cantidad, sabor, bebidas, masa, tamanio;
+
+		ArrayList<Object> servicio = new ArrayList<Object>();
+			servicio.add(numPizzas);
+			servicio.add(menu.getSaborPizza());
+			servicio.add(menu.getTamanioPizza());
+			servicio.add(menu.getTipoMasa());
+			servicio.add(menu.getNumeroDeBebidas());
 					
-			cantidad = (int) plato.get(0);
-			sabor = (int) plato.get(1);
-			tamanio = (String) plato.get(2);
-			masa = (String) plato.get(3);
-			
-		System.out.println("\nNUEVO PEDIDO\n----------------\n" + "ID de pedido: " + idPedido + "\nCantidad: " + cantidad + ".\nSabor nº: " + sabor
-				+ ".\nTamaño: "+ tamanio + ".\nMasa: " + masa + ".\nPedido para: " + tipoPedido() + "\n");
+			cantidad = "'" + (servicio.get(0) + "' pizza de");
+			sabor = ("sabor nº: '" + servicio.get(1) + "'.");
+			tamanio = ("Tamaño: '" + servicio.get(2) + "' y");
+			masa = ("masa: '" + servicio.get(3) + "'.");
+			bebidas =("Para beber: '" + servicio.get(4) + "' bebidas.");
+			comanda = ("\n- " + cantidad + " " + sabor + " " + tamanio + " " + masa + " " + bebidas);
+		
+		return comanda;
 	}
 	
 
+	
+	/**
+
+     * Método para saber qué tipo de pedido quiere el cliente. Esto es si va a ser un pedido para llevar o no. Para averiguar esto una un condicional que usa una variable tipoPedido pero el valor por defecto es "Restaurante"
+     *  Si el valor es 1 Se asigna domicilio.
+      
+     * @param int tipoPedido			Variable tipo int que, según el condicional. 
+
+     * @return Devuelve un String que usa la variable tipoPedido para saber, con un if, si es "Domicilio" o "Restaurante".
+
+     */
+	
 	public String tipoPedido() {
 
 		if (this.tipoPedido == 1) {
@@ -158,17 +216,13 @@ public class Pedidos extends Pizzeria implements ICalcularTotal  {
 
 
 	
+	
+	
 
 // ------------------------------------------------------------------ MÉTODOS OVERRIDE
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
-	@Override
-	public void calculoPrecioTotal() {
-		if (this.tipoPedido == 1) {
-			menu.precio += PLUS_ENVIO;
-		}
-	}
 
 	@Override
 	public String toString() {
