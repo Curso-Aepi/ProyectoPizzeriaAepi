@@ -18,10 +18,10 @@ import es.pizzeriainterfaz.IAniadirMenu;
  * 
  */
 
-public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
+public class Menu extends Pizzeria implements ICalcular, IAniadirMenu {
 
-	String tamanioPizza;
-	String tipoMasa;
+	int tamanioPizza;
+	int tipoMasa;
 	int saborPizza;
 	int numeroDeBebidas;
 	public static final int PIZZA_PEQUENIA = 3;
@@ -59,7 +59,7 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * 
 	 */
 	public Menu(String nombre, String numeroDeTelefono, String horario, String direccion, int numeroDeEmpleados,
-			String tamanioPizza, String tipoMasa, int saborPizza, int numeroDeBebidas) {
+			int tamanioPizza, int tipoMasa, int saborPizza, int numeroDeBebidas) {
 		super(nombre, numeroDeTelefono, horario, direccion, numeroDeEmpleados);
 		this.tamanioPizza = tamanioPizza;
 		this.tipoMasa = tipoMasa;
@@ -73,7 +73,7 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * 
 	 * @return Devuelve el tamaño de la pizza (pequeña, mediana, familiar)
 	 */
-	public String getTamanioPizza() {
+	public int getTamanioPizza() {
 		return tamanioPizza;
 	}
 
@@ -82,12 +82,13 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * 
 	 * @param tamanioPizza Establece el tamaño de la pizza (pequeña, mediana,
 	 *                     familiar)
+	 * 
 	 */
-	public void setTamanioPizza(String tamanioPizza) {
-		try {
+	public void setTamanioPizza(int tamanioPizza) {
+		if (tamanioPizza >= 1 && tamanioPizza <= 3) {
 			this.tamanioPizza = tamanioPizza;
-		} catch (InputMismatchException e) {
-			System.out.println("Dato incorrecto");
+		} else {
+			System.out.println("Revisa el tamaño de la pizza");
 		}
 
 	}
@@ -97,7 +98,7 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * 
 	 * @return Devuelve el tipo de masa (fina, normal, sin gluten)
 	 */
-	public String getTipoMasa() {
+	public int getTipoMasa() {
 		return tipoMasa;
 	}
 
@@ -106,11 +107,11 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * 
 	 * @param tipoMasa
 	 */
-	public void setTipoMasa(String tipoMasa) {
-		try {
+	public void setTipoMasa(int tipoMasa) {
+		if (tipoMasa >= 1 && tipoMasa <= 3) {
 			this.tipoMasa = tipoMasa;
-		} catch (InputMismatchException e) {
-			System.out.println("Dato incorrecto");
+		} else {
+			System.out.println("Revisa el tipo de masa");
 		}
 
 	}
@@ -130,10 +131,10 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * @param saborPizza
 	 */
 	public void setSaborPizza(int saborPizza) {
-		try {
+		if (saborPizza >= 1 && saborPizza <= 3) {
 			this.saborPizza = saborPizza;
-		} catch (InputMismatchException e) {
-			System.out.println("Dato incorrecto");
+		} else {
+			System.out.println("Revisa el sabor de la pizza");
 		}
 
 	}
@@ -153,11 +154,12 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	 * @param numeroDeBebidas Establece el número de bebidas pedidas
 	 */
 	public void setNumeroDeBebidas(int numeroDeBebidas) {
-		try {
+		if (numeroDeBebidas >= 0) {
 			this.numeroDeBebidas = numeroDeBebidas;
-		} catch (InputMismatchException e) {
-			System.out.println("Dato incorrecto");
+		} else {
+			System.out.println("Revisa las bebidas");
 		}
+
 	}
 
 	/**
@@ -290,6 +292,8 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 	/**
 	 * Este método calcula el precio final del menú
 	 * 
+	 * @return
+	 * 
 	 * @see ICalcular
 	 * 
 	 */
@@ -301,46 +305,47 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 
 		switch (this.tamanioPizza) {
 
-		case "pequeña":
+		case 1:
 			precio = PIZZA_PEQUENIA;
 			precioPizzas += precio;
 			break;
 
-		case "mediana":
+		case 2:
 			precio = PIZZA_MEDIANA;
 			precioPizzas += precio;
 			break;
 
-		case "familiar":
+		case 3:
 			precio = PIZZA_FAMILIAR;
 			precioPizzas += precio;
 			break;
 
 		default:
-			System.out.println("Revisa el tamaño de la pizza");
-			break;
+			System.out.println("¡AVISO! Error en el tamaño de la pizza");
+			System.exit(0);
 
 		}
 
 		switch (this.tipoMasa) {
-		case "fina":
+		case 1:
 			precio = MASA_FINA;
 			precioPizzas += precio;
 			break;
 
-		case "normal":
+		case 2:
 			precio = MASA_NORMAL;
 			precioPizzas += precio;
 			break;
 
-		case "sin gluten":
+		case 3:
 			precio = MASA_SINGLUTEN;
 			precioPizzas += precio;
 			break;
 
 		default:
-			System.out.println("Revisa el tipo de masa");
-			break;
+			System.out.println("¡AVISO! Error en el tipo de masa");
+			System.exit(0);
+
 		}
 
 		switch (this.saborPizza) {
@@ -361,18 +366,15 @@ public class Menus extends Pizzeria implements ICalcular, IAniadirMenu {
 			break;
 
 		default:
-			System.out.println("Pizza incorrecta. Revisa el tipo de pizza");
-			break;
+			System.out.println("\"¡AVISO! Error en el sabor de la pizza\"");
+			System.exit(0);
 
 		}
 
 		precioBebidas = PRECIO_BEBIDA * this.numeroDeBebidas;
 		double precioTotal = precioBebidas + precioPizzas;
 
-		System.out.println("Precio de las bebidas = " + precioBebidas + " €");
-		System.out.println("Precio de las pizzas = " + precioPizzas + " €");
-		System.out.println("Precio total: ");
 		return precioTotal;
-	}
 
+	}
 }
