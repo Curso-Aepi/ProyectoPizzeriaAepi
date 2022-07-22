@@ -259,17 +259,19 @@ public class Reparto extends Pizzeria implements ICalcular {
 		double gastoGasolina = 0;
 
 		switch (this.tipoVehiculo) {
-		case 1: {
+		case 1:
 			gastoGasolina = (CONSUMO_MOTO * this.distancia * precioGasolina) * 2;
 			break;
-		}
+
 		case 2:
 			gastoGasolina = (CONSUMO_COCHE * this.distancia * precioGasolina) * 2;
 			break;
-		}
 
+		default:
+			System.out.println("Hay un error en el tipo de vehículo");
+			System.exit(0);
+		}
 		return gastoGasolina;
 
 	}
-
 }
