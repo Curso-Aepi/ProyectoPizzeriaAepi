@@ -227,7 +227,7 @@ public class Empleado extends Pizzeria implements ICalcular, ICambioTurno{
 		 */
 		@Override
 		
-		// Sacar Scanner, debe ir en método main !!!!
+		
 		public double calcular() {
 			double sueldoHoraExtra = (sueldo*1.5);
 			return sueldoHoraExtra;	
