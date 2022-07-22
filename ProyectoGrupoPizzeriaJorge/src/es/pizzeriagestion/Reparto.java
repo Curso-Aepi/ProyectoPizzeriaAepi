@@ -88,7 +88,7 @@ public class Reparto extends Pizzeria implements ICalcular {
 	 * @param numeroDeRepartidores
 	 */
 	public void setNumeroDeRepartidores(int numeroDeRepartidores) {
-		if (this.numeroDeRepartidores > 0) {
+		if (numeroDeRepartidores > 0) {
 			this.numeroDeRepartidores = numeroDeRepartidores;
 		} else {
 			System.out.println("No hay repartidores disponibles en este momento");
@@ -111,7 +111,7 @@ public class Reparto extends Pizzeria implements ICalcular {
 	 * @param tipoVehiculo
 	 */
 	public void setTipoVehiculo(String tipoVehiculo) {
-		if (this.tipoVehiculo.equals("moto") && this.tipoVehiculo.equals("coche")) {
+		if (tipoVehiculo.equals("moto") && tipoVehiculo.equals("coche")) {
 			this.tipoVehiculo = tipoVehiculo;
 		} else {
 			System.out.println("Solo tenemos reparto en moto y coche. Revísalo");
@@ -135,7 +135,7 @@ public class Reparto extends Pizzeria implements ICalcular {
 	 */
 	// REVISAR
 	public void setDistancia(double distancia) {
-		if (this.distancia > 20) {
+		if (distancia > 20) {
 			System.out.println("El domicilio se encuentra fuera del radio de entrega (20 kilómetros)");
 
 		} else {
