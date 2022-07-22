@@ -189,6 +189,51 @@ public class ProyectoGrupoPizzeriaJorge {
 
 								System.out.println("Precio total = " + precioTotalMenus + "€");
 								break;
+							
+							case 6:{
+								
+								System.out.println("\n¡HOLA! BIENVENIDO A PEDIDOS\n");
+								
+								Menus pizza = new Menus();
+								Pedidos pedido = new Pedidos();
+								ArrayList<String>totalPedido = new ArrayList<>();
+								String comensal;
+								
+								System.out.println("¿Quiere sumar una pizza a su pedido?\n 0.Añadir pizza \n 2.Terminar pedido");
+								int bucle = lector.nextInt();
+								
+								while(bucle != 2) {
+									System.out.println("¿De qué quiere la pizza?\n 1.Vegetal.\n 2.Carne.\n 3.Carbonara.");
+									pizza.setSaborPizza(lector.nextInt());
+									System.out.println("\nPor favor, introduzaca el tamaño:\nEscriba pequeña, mediana o familiar.");
+									pizza.setTamanioPizza(lector.next());
+									System.out.println("\n¿Qué tipo de masa quiere?\nEscriba fina, normal o sin gluten.");
+									pizza.setTipoMasa(lector.next());
+									System.out.println("\nOk. Por último, ¿Cuántas bebidas quiere?\nEscriba en número cuántas.");
+									pizza.setNumeroDeBebidas(lector.nextInt());
+									System.out.println("¿De este tipo de pizza, quiere 1, 2 o más pizzas?\nEscriba en número cuántaso.");
+									comensal = pedido.servicio(pizza, lector.nextInt());
+									totalPedido.add(comensal);
+									
+									String str = "";
+									for (String totales : totalPedido) {
+										str+= totales;
+									}
+									
+									System.out.println(str);
+									
+									System.out.println("\n¿Quiere sumar una pizza a su pedido?\n0. Terminar pedido\n1. Pedir otra pizza.");
+									bucle = lector.nextInt();
+									
+									if(bucle == 0) {
+										System.out.println("\nGenial, ya solo falta una cosa. ¿Pulsa 1 si vas a comer en el restaurante o 2 si el pedido es a domicilio");
+										System.out.println("\nPedido generado: ");
+										pedido.nuevoPedido(str);
+									}
+								}
+								break;
+							}
+								
 							case 10: {
 								System.exit(0);
 							}
