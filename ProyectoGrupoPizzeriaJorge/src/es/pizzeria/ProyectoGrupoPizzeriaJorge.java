@@ -83,7 +83,6 @@ public class ProyectoGrupoPizzeriaJorge {
 								String nombre = lector.next();
 								AtomicBoolean bandera = new AtomicBoolean();
 								datosEmpleados.entrySet().forEach((entryDos) -> {
-									String keyDos = (String) entryDos.getKey();
 									Empleado valueDos = (Empleado) entryDos.getValue();
 							
 									if (nombre.equalsIgnoreCase(valueDos.getNombreEmpleado())) {
@@ -105,7 +104,6 @@ public class ProyectoGrupoPizzeriaJorge {
 								String nombre = lector.next();
 								AtomicBoolean bandera = new AtomicBoolean();
 								datosEmpleados.entrySet().forEach((entryDos) -> {
-									String keyDos = (String) entryDos.getKey();
 									Empleado valueDos = (Empleado) entryDos.getValue();
 							
 									if (nombre.equalsIgnoreCase(valueDos.getNombreEmpleado())) {
