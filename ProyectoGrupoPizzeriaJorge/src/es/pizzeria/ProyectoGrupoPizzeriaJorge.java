@@ -81,40 +81,44 @@ public class ProyectoGrupoPizzeriaJorge {
 							case 1: {
 								System.out.println("Introduzca el nombre del empleado: ");
 								String nombre = lector.next();
-								
+								AtomicBoolean bandera = new AtomicBoolean();
 								datosEmpleados.entrySet().forEach((entryDos) -> {
 									String keyDos = (String) entryDos.getKey();
 									Empleado valueDos = (Empleado) entryDos.getValue();
-									
+							
 									if (nombre.equalsIgnoreCase(valueDos.getNombreEmpleado())) {
+										bandera.set(true);
 										System.out.println("Introduzca el número de horas extra realizadas:");
 										int horasExtra = lector.nextInt();
-										System.out.println("El importe extra a abonar al empleado "+nombre+" es de "+(horasExtra*valueDos.calcular())+" €");
-									}
-									else {
-										System.out.println("No consta empleado con dicho nombre.");
-									}
+										System.out.println("El importe extra a abonar al empleado " + nombre + " es de "
+										+ (horasExtra * valueDos.calcular()) + " €");
+									} 
+						
 								});
-								break;	
+								if (bandera.get() == false) {
+									System.out.println("No consta empleado con dicho nombre.");
 								}
+								break;
+							}
 							case 2: {
 								System.out.println("Introduzca el nombre del empleado: ");
 								String nombre = lector.next();
-								
+								AtomicBoolean bandera = new AtomicBoolean();
 								datosEmpleados.entrySet().forEach((entryDos) -> {
 									String keyDos = (String) entryDos.getKey();
 									Empleado valueDos = (Empleado) entryDos.getValue();
-									
+							
 									if (nombre.equalsIgnoreCase(valueDos.getNombreEmpleado())) {
+										bandera.set(true);
 										valueDos.cambioTurno();
-										System.out.println("Se ha cambiado el turno a "+valueDos.getTurno());
-									}
-									else {
-										System.out.println("No consta empleado con dicho nombre.");
+										System.out.println("Se ha cambiado el turno a " + valueDos.getTurno());
 									}
 								});
-								break;	
-							}	
+								if (bandera.get() == false) {
+									System.out.println("No consta empleado con dicho nombre.");
+								}
+								break;
+							}
 							case 3: {
 								System.out.println("Introduzca ingresos del día:");
 								double ingresos = lector.nextDouble();
