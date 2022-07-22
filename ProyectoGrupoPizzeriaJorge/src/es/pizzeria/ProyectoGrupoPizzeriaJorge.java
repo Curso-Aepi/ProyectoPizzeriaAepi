@@ -72,7 +72,7 @@ public class ProyectoGrupoPizzeriaJorge {
 						System.out.println("4. Calcular beneficios del día: ");
 						System.out.println("5. Crear menú");
 						System.out.println("6. Añadir menú");
-						System.out.println("7. Añadir Cocinero");
+						System.out.println("16. Añadir/Quitar cocinero");
 						System.out.println("8. Entregas a domicilio");
 						System.out.println("10. Salir ");
 						opcion = lector.nextInt();
@@ -325,6 +325,24 @@ public class ProyectoGrupoPizzeriaJorge {
 							case 15: {
 								System.exit(0);
 							}
+							case 16: 
+								Cocina cocina = new Cocina();
+								boolean salir = false;
+								do {
+									System.out.println("¿Qué quieres hacer?\n 1.Llamar un nuevo cocinero.\n 2.Quitar un cocinero. \n 3.Salir");
+									opcion = lector.nextInt();
+									switch (opcion) {
+										case 1: 
+											cocina.aniadirCocinero();
+											break;
+										case 2:
+											cocina.quitarCocinero();
+											break;
+										case 3:
+											salir = true;
+									}
+								}while(!salir);
+							break;
 						}
 						
 						
