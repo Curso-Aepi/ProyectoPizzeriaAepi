@@ -23,28 +23,10 @@ import es.pizzeriagestion.Menus;
 
 
 /**
- * @author ricardomurillo
- *
- *
- * VARIABLES
- * 
  * @param idPedido			ID de cada uno de los pedidos.
  * @param numPizzas			Número de pizzas del mismo sabor que tiene un pedido.
  * @param tipoPedido		Pedido a domicilio o en restaurante.
  * @param precioPedido			Precio total del pedido.
- * 
- * MÉTODO nuevoPedido()
- * 
- * @param menu				Recoge los valores Masa, Tamaño y sabor.
- * @param numPizzas			Recoge el número de pizzas que lleva cada menu.
- * @param <servicio>			Lista de arrays de Objetos para unir el menu con el numero de pizzas y el id del pedido.
- * @return					Lista de objetos con el contenido de un pedido.
- * 
- * 
- * MÉTODO tipoPedido()
- * 
- * @param nuevoPedido()		Devuelve Domicilio si es igual a 1 o Restaurante si es igual 0. Por defecto devuelve Restaurante.
- * 
  */
 
 
@@ -57,6 +39,13 @@ public class Pedidos extends Pizzeria  {
 // ------------------------------------------------------------------ VARIABLES
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	/**
+	 * @param idPedido			ID de cada uno de los pedidos.
+	 * @param numPizzas			Número de pizzas del mismo sabor que tiene un pedido.
+	 * @param tipoPedido		Pedido a domicilio o en restaurante.
+	 * @param precioPedido			Precio total del pedido.
+	 */
 	
 	// ID de cada uno de los pedidos.
 	private int idPedido;
@@ -72,6 +61,9 @@ public class Pedidos extends Pizzeria  {
 
 	// Una comanda es una parte del pedido, lo que pedidria un cliente si son cuatro, por ejemplo.
 	private String comanda;
+	
+	
+	
 	
 	
 
