@@ -226,7 +226,7 @@ public class ProyectoGrupoPizzeriaJorge {
 									System.out.println("\n¿Quiere sumar una pizza a su pedido?\n0. Terminar pedido\n1. Pedir otra pizza.");
 									bucle = lector.nextInt();
 									
-									if(bucle == 0) {
+									if(bucle == 2) {
 										System.out.println("\nGenial, ya solo falta una cosa. ¿Pulsa 1 si vas a comer en el restaurante o 2 si el pedido es a domicilio");
 										System.out.println("\nPedido generado: ");
 										pedido.nuevoPedido(str);
