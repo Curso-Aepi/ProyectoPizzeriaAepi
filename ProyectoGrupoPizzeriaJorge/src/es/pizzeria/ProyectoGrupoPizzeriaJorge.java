@@ -70,6 +70,7 @@ public class ProyectoGrupoPizzeriaJorge {
 						System.out.println("2. Cambiar turno a empleado: ");
 						System.out.println("3. Calcular caja diaria: ");
 						System.out.println("4. Calcular beneficios del día: ");
+						System.out.println("5. Crear menú");
 						System.out.println("10. Salir ");
 						opcion = lector.nextInt();
 						
@@ -139,6 +140,54 @@ public class ProyectoGrupoPizzeriaJorge {
 								System.out.println("Los beneficios de hoy son de: "+(contabilidadDia.beneficio())+" €");
 								break;
 							}
+								case 5:
+						Menu menu = new Menu();
+						System.out.println("¿Número de pizzas?");
+						int numeroPizzas = lector.nextInt();
+						double precioTotalMenus = 0;
+						for (int i = 1; i <= numeroPizzas; i++) {
+							System.out.println("------ Pizza " + i + "/" + numeroPizzas + " ------");
+							System.out.println("¿Tamaño de la pizza?\n[1]Pequeña [2]Mediana [3]familiar: ");
+							try {
+								menu.setTamanioPizza(lector.nextInt());
+							} catch (Exception e) {
+								e.getMessage();
+							}
+
+							System.out.println("¿Tipo de masa?\n[1]Normal [2]Fina [3]Sin gluten: ");
+							try {
+								menu.setTipoMasa(lector.nextInt());
+							} catch (Exception e) {
+
+								e.getMessage();
+							}
+
+							System.out.println("¿Sabor de la pizza?\n[1]Vegetal [2]De carne [3]Carbonara: ");
+
+							try {
+								menu.setSaborPizza(lector.nextInt());
+							} catch (Exception e) {
+
+								e.getMessage();
+							}
+
+							System.out.println("¿Número de bebidas? ");
+							try {
+								menu.setNumeroDeBebidas(lector.nextInt());
+							} catch (Exception e) {
+
+								e.getMessage();
+							}
+
+							menu.aniadirMenu();
+							precioTotalMenus += menu.calcular();
+							System.out.println("Precio del menú = " + menu.calcular() + "€");
+							
+							
+						}
+						
+						System.out.println("Precio total = " + precioTotalMenus + "€");
+						break;
 							case 10: {
 								System.exit(0);
 							}
