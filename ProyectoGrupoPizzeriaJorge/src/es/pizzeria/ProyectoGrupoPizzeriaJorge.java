@@ -71,6 +71,8 @@ public class ProyectoGrupoPizzeriaJorge {
 						System.out.println("3. Calcular caja diaria: ");
 						System.out.println("4. Calcular beneficios del día: ");
 						System.out.println("5. Crear menú");
+						System.out.println("6. Añadir menú");
+						System.out.println("7. Añadir Cocinero");
 						System.out.println("10. Salir ");
 						opcion = lector.nextInt();
 						
