@@ -272,13 +272,63 @@ public class ProyectoGrupoPizzeriaJorge {
 								System.out.println("El tiempo de entrega estimado es de " + reparto.tiempoDeEntrega() + " minutos");
 								System.out.println("El consumo de gasolina para el reparto es de " + reparto.calcular() + "€");
 								
-							case 10: {
+							case 8:{
+								Reserva reserva = new Reserva();
+									System.out.println("Introduce una nueva reserva:");
+								int reservaUno = lector.nextInt();
+								reserva.nuevaReserva();
+									System.out.println("El número de reservas es: " + reservaUno);
+							}
+							case 9:{
+								Reserva reserva1 = new Reserva();
+									System.out.println("Indica cuántas reservas quieres quitar:");
+								int reservaDos = lector.nextInt();
+								reserva1.quitarReserva();
+									System.out.println("El número de reservas es: " + reservaDos);
+							}
+							case 10:{
+								Reserva reserva2 = new Reserva();
+									System.out.println("Introduce el numero de personas de la reserva: ");
+								int personas = lector.nextInt();
+								reserva2.modReserva();
+									System.out.println("El número de personas de la reseva es: " + personas);
+							}
+							case 11:{
+								Inventario invent = new Inventario();
+									System.out.println("Ver si hay suficiente iventario en el almacén");
+								invent.reponer();
+									System.out.println(invent);
+							}
+							case 12:{
+								Inventario inventUno = new Inventario();
+									System.out.println("Ver las bebidas y masas.");
+								inventUno.almacen();
+									System.out.println("Las bebidas y masas son: " + inventUno);
+							}
+							case 13:{
+								Inventario inventDos = new Inventario();
+									System.out.println("Modificar el almacén.");
+									System.out.println("Introduce número de bebidas.");
+								int bebidas = 0;
+								bebidas = lector.nextInt();
+									System.out.println("Introduce el número de masas");
+								int numMasa = 0;
+								numMasa = lector.nextInt();
+								inventDos.modAlmacen(); 
+									System.out.println("El almacén queda: " + inventDos);
+							}
+							case 14{
+								Cliente cliente = new Cliente();
+								cliente.descuento();
+									System.out.println("El descuento del cliente es: " + cliente);
+							}
+							case 15: {
 								System.exit(0);
 							}
 						}
 						
 						
-					} while (opcion != 10);
+					} while (opcion != 15);
 				
 				}
 			}
