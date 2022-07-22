@@ -1,6 +1,6 @@
 package es.pizzeriagestion;
 
-import pizzeriainterfaz.ICambioTurno;
+import es.pizzeriainterfaz.ICambioTurno;
 
 /**
 
